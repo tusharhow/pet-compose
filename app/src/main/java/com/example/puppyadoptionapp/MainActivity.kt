@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             PuppyAdoptionAppTheme() {
-                MyApp()
+                PetApp()
             }
         }
     }
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
 @ExperimentalFoundationApi
 @Composable
-fun MyApp(){
+fun PetApp(){
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "HomeScreen"){
         composable("HomeScreen"){

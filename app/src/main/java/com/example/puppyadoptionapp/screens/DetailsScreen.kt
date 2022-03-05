@@ -20,7 +20,6 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.puppyadoptionapp.R
 import com.example.puppyadoptionapp.data.DogData
 import com.example.puppyadoptionapp.ui.theme.Purple500
 
@@ -56,8 +55,8 @@ fun DetailsScreen(navController: NavController,dogData: DogData){
 
         }
     }
-    ) { innerPadding ->
-    BodyContent(Modifier.padding(16.dp),dogs = dogData)
+    ) {
+        BodyContent(Modifier.padding(16.dp),dogs = dogData)
     }
 }
 
@@ -82,7 +81,7 @@ fun BodyContent(modifier: Modifier = Modifier, dogs:DogData){
                 .border(1.dp, Color(0xffd5d5d5), shape = RoundedCornerShape(4.dp))
                 .padding(vertical = 8.dp)
                 .weight(1f)
-            DetailsBox(title = "Sex", info = "${dogs.sex}",mod)
+            DetailsBox(title = "Sex", info = dogs.sex,mod)
             Spacer(modifier = Modifier.width(4.dp))
             DetailsBox(title = "Age", info = "${dogs.age} year",mod)
             Spacer(modifier = Modifier.width(4.dp))
@@ -102,7 +101,7 @@ fun BodyContent(modifier: Modifier = Modifier, dogs:DogData){
 fun DetailsBox(title:String, info:String, modifier: Modifier = Modifier){
     Box(modifier = modifier)
         {
-        Column() {
+        Column {
             Text(title,Modifier.fillMaxWidth(),textAlign = TextAlign.Center)
             Text(info,Modifier.fillMaxWidth(),textAlign = TextAlign.Center)
         }
