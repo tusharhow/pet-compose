@@ -20,11 +20,11 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.puppyadoptionapp.data.DogData
+import com.example.puppyadoptionapp.data.PetData
 import com.example.puppyadoptionapp.ui.theme.Purple500
 
 @Composable
-fun DetailsScreen(navController: NavController,dogData: DogData){
+fun DetailsScreen(navController: NavController,dogData: PetData){
     Scaffold(
         //define the top bar
     topBar = {
@@ -61,7 +61,7 @@ fun DetailsScreen(navController: NavController,dogData: DogData){
 }
 
 @Composable
-fun BodyContent(modifier: Modifier = Modifier, dogs:DogData){
+fun BodyContent(modifier: Modifier = Modifier, dogs:PetData){
     Column(modifier = modifier) {
         Box(
             Modifier

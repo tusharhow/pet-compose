@@ -10,7 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.rememberNavController
-import com.example.puppyadoptionapp.data.DogsList
+import com.example.puppyadoptionapp.data.PetList
 import com.example.puppyadoptionapp.screens.DetailsScreen
 import com.example.puppyadoptionapp.screens.HomeScreen
 import com.example.puppyadoptionapp.ui.theme.PuppyAdoptionAppTheme
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            PuppyAdoptionAppTheme() {
+            PuppyAdoptionAppTheme {
                 PetApp()
             }
         }
@@ -37,7 +37,7 @@ fun PetApp(){
         }
         composable("DetailsScreen/{dogIndex}",arguments = listOf(navArgument("dogIndex"){ type = NavType.IntType })){
             val dogIndex = it.arguments?.getInt("dogIndex") ?: 0
-            DetailsScreen(navController, DogsList[dogIndex])
+            DetailsScreen(navController, PetList[dogIndex])
         }
     }
 

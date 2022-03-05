@@ -1,6 +1,4 @@
 package com.example.puppyadoptionapp.screens
-
-import android.widget.Space
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.GridCells
@@ -8,7 +6,6 @@ import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -26,11 +23,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.navigate
-import com.example.puppyadoptionapp.R
-import com.example.puppyadoptionapp.data.DogData
-import com.example.puppyadoptionapp.data.DogsList
+import com.example.puppyadoptionapp.data.PetData
+import com.example.puppyadoptionapp.data.PetList
 
 
 @ExperimentalFoundationApi
@@ -52,14 +47,14 @@ fun HomeScreen(navController: NavController){
 
 @ExperimentalFoundationApi
 @Composable
-fun HomeBody(modifier: Modifier = Modifier, onCardClicked: (DogData) -> Unit){
+fun HomeBody(modifier: Modifier = Modifier, onCardClicked: (PetData) -> Unit){
     Column(modifier = modifier) {
         Text(text = "Our Puppies List 🐶",style = MaterialTheme.typography.h5,fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(20.dp))
         LazyVerticalGrid(cells = GridCells.Fixed(2), content = {
 
-            items(DogsList.size) {
-                item -> PetCardGrid(DogsList[item], onCardClicked)
+            items(PetList.size) {
+                item -> PetCardGrid(PetList[item], onCardClicked)
             }
         })
     }
@@ -70,7 +65,7 @@ fun HomeBody(modifier: Modifier = Modifier, onCardClicked: (DogData) -> Unit){
 @Composable
 fun AppHeader(){
     Column(Modifier.padding(16.dp)) {
-        var textFieldValue = remember { mutableStateOf<String>("")}
+        val textFieldValue = remember { mutableStateOf<String>("")}
 //        Image(painter = painterResource(id = R.drawable.logo), contentDescription = null,modifier = Modifier.size(50.dp))
         Spacer(Modifier.height(10.dp))
         Text(
@@ -114,7 +109,7 @@ fun AppHeader(){
 }
 
 @Composable
-fun PetCardGrid(dogs:DogData, onCardClicked: (DogData) -> Unit){
+fun PetCardGrid(dogs:PetData, onCardClicked: (PetData) -> Unit){
     Box(
         Modifier
             .padding(4.dp)
@@ -157,7 +152,7 @@ fun petDetail(age:Int,weight: Double){
             ),
                 textAlign = TextAlign.Center
                 )
-            Text("$age $year",textAlign = TextAlign.Center,)
+            Text("$age $year", textAlign = TextAlign.Center)
         }
         Column(
             Modifier
@@ -177,7 +172,7 @@ fun petDetail(age:Int,weight: Double){
 @Preview(showSystemUi = true)
 @Composable
 fun appPreview(){
-    Column() {
+    Column {
         AppHeader()
         HomeBody(onCardClicked = {})
     }
