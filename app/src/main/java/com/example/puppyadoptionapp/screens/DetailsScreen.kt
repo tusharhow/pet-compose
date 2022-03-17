@@ -25,6 +25,8 @@ import com.example.puppyadoptionapp.ui.theme.Purple500
 
 @Composable
 fun DetailsScreen(navController: NavController,dogData: PetData){
+    val isClicked: Boolean = false
+
     Scaffold(
         //define the top bar
     topBar = {
@@ -33,7 +35,9 @@ fun DetailsScreen(navController: NavController,dogData: PetData){
                 Icon(imageVector = Icons.Filled.ArrowBack, contentDescription =  null, tint = Purple500)
             }},
             title = { Text(dogData.name,textAlign = TextAlign.Center,modifier = Modifier.fillMaxWidth(),style = MaterialTheme.typography.h5) },
-            actions = { IconButton(onClick = { /*TODO*/ }) { Icon(imageVector = Icons.Filled.Favorite, contentDescription =null,tint = Purple500) }},
+            actions = { IconButton(onClick = {
+                println("Clicked")
+            }) { Icon(imageVector = Icons.Filled.Favorite, contentDescription =null,tint = Purple500) }},
             modifier = Modifier.height(68.dp),
             backgroundColor = Color.White,
             elevation = 0.dp
@@ -88,7 +92,7 @@ fun BodyContent(modifier: Modifier = Modifier, dogs:PetData){
             DetailsBox(title = "Weight", info = "${dogs.weight} Kg",mod)
 
         }
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(15.dp))
         Text("Summary :", style = MaterialTheme.typography.h6)
         Spacer(modifier = Modifier.height(4.dp))
         Text(dogs.desc,style = MaterialTheme.typography.body1,color = Color(0xff515151),fontStyle = FontStyle.Italic)
@@ -102,6 +106,7 @@ fun DetailsBox(title:String, info:String, modifier: Modifier = Modifier){
     Box(modifier = modifier)
         {
         Column {
+
             Text(title,Modifier.fillMaxWidth(),textAlign = TextAlign.Center)
             Text(info,Modifier.fillMaxWidth(),textAlign = TextAlign.Center)
         }
