@@ -79,7 +79,9 @@ fun AppHeader(){
         Spacer(Modifier.height(24.dp))
         TextField(
             value = textFieldValue.value,
-            onValueChange = { value -> textFieldValue.value = value },
+            onValueChange = { value -> textFieldValue.value = value
+                            println(value)
+                            },
             Modifier
                 .fillMaxWidth()
                 .background(color = Color.Transparent)
@@ -94,8 +96,8 @@ fun AppHeader(){
                 disabledIndicatorColor = Color.Transparent,
                 errorIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
-                textColor = MaterialTheme.colors.primary,
-                leadingIconColor = MaterialTheme.colors.primary,
+                textColor =Color.Black,
+                leadingIconColor = Color.Black,
 
             ),
             textStyle = TextStyle(
@@ -133,13 +135,13 @@ fun PetCardGrid(dogs:PetData, onCardClicked: (PetData) -> Unit){
             }
             Spacer(modifier = Modifier.height(4.dp))
             Text(dogs.name, style = TextStyle(color = Color(0xff212121),fontWeight = FontWeight.Bold,fontSize = 22.sp))
-            petDetail(age = dogs.age, weight = dogs.weight)
+            petDetail(age = dogs.age)
         }
     }
 }
 
 @Composable
-fun petDetail(age:Int,weight: Double){
+fun petDetail(age: Int){
     Row(horizontalArrangement = Arrangement.SpaceBetween){
         Column(
 
